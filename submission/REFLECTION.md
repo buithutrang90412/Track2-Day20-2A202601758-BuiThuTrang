@@ -67,7 +67,7 @@ Q2 nhỏ hơn 0.11 GB nhưng chậm hơn. Decode giảm từ 53.3 xuống 50.9 t
 - **Effective concurrency ở 50 users:** _<số>_ so với `--parallel` = _<số>_ slots
 
 **Peak `llamacpp:n_busy_slots_per_decode`** (từ `make metrics` khi `make load-50` đang
-chạy): _<số>_ /  slots
+chạy): **3.91 / 4 slots**
 
 **Saturation reading** (≤ 80 chữ): server của bạn bão hoà ở đâu, và **bằng chứng nào**
 thuyết phục bạn? Nếu P95 tăng nhanh hơn RPS thì phần latency thêm đó là queue time hay
