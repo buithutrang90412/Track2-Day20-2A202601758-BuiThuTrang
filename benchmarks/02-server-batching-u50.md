@@ -17,6 +17,6 @@ they arrived too far apart. A peak approaching `--parallel` means the scheduler 
 genuinely packing concurrent requests into shared decode steps.
 `requests_deferred` went above zero: more requests arrived than there were slots, so some waited. That wait is the queue time in your P95.
 
-## Your observation (required -- replace this line)
+## Your observation
 
 Peak batch width là 3.91/4 slots, tương đương 98% capacity. `requests_deferred` lên 46 cho thấy có request phải chờ. Kết quả này cho thấy continuous batching hoạt động và server gần bão hòa.

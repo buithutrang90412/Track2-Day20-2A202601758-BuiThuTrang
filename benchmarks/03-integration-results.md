@@ -38,6 +38,6 @@ The reasoning is as follows:
 2.  **Decode** is described as "memory-bandwidth-bound," meaning it requires significant memory bandwidth to
 
 
-## Which N16-N19 pieces are real (required -- replace this line)
+## Which N16-N19 pieces are real
 
 N16 Cloud/IaC: stub. N17 Data pipeline: stub. N18 Lakehouse: stub. N19 Vector + features: stub; pipeline dùng keyword overlap fallback vì không có embedding server. N20 Serving: real. LLM chiếm 100% latency, đúng với kỳ vọng. Muốn giảm 2x, tập trung vào decode LLM và output tokens.

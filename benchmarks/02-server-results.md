@@ -27,6 +27,6 @@ utilisation. For true slot utilisation use the server's own gauges (`make metric
 
 Throughput moved 1.06x while P95 moved 3.23x. That gap is the goodput argument: past saturation you buy throughput by spending latency, and if your SLO is a P95 target then the requests you added are no longer being served within it. (This lab does not fix an SLO number for you -- pick one in your write-up and state how much goodput you keep at it.)
 
-## Your reading (required -- replace this line)
+## Your reading
 
 Server bão hòa ở 50 users. RPS chỉ tăng 1.06x khi tải tāng 5x, nhưng P95 tāng 3.23x từ 13 giây lên 42 giây. Effective concurrency 29.3 cao hơn 4 slots nên request phải chờ. Nên giảm prompt/output trước để tāng goodput mà không tốn thêm RAM.

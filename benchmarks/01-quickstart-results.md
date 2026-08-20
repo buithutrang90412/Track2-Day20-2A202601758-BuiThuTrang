@@ -14,6 +14,6 @@ Completed requests: `Q4_K_M` 10/10 · `UD-Q2_K_XL` 10/10
 - **TPOT** = per-output-token decode cost, bounded by memory bandwidth. `decode tok/s = 1000 / TPOT_p50`.
 - `UD-Q2_K_XL` decodes **1.05x SLOWER** than `Q4_K_M` here, despite being 0.11 GB smaller. That is a real result, not a mistake: fewer bits only buys speed when decode is limited by memory bandwidth. On a machine that is compute-limited instead — few cores, no GPU offload — the extra dequantization work of a heavily-quantized format can cost more than the bytes it saves. Say which case yours is.
 
-## Your observation (required -- replace this line)
+## Your observation
 
 Q2 nhỏ hơn 0.11 GB nhưng chậm hơn: decode 50.9 so với 53.3 tok/s, TTFT P50 270 so với 190 ms. Q2 chỉ phù hợp khi cần tiết kiệm dung lượng.

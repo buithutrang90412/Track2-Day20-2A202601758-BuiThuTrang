@@ -21,6 +21,6 @@ Use this in your run:
 LAB_N_THREADS=6 make bench
 ```
 
-## Your explanation (required -- replace this line)
+## Your explanation
 
 Knee nằm ở `-t 6`, bằng số physical core, đạt 51.9 tok/s. Tăng lên 12 thread giảm nhẹ còn 49.6 tok/s; 24 thread giảm mạnh còn 3.6 tok/s. Các thread thêm phải tranh CPU, cache và memory bandwidth nên scheduling overhead tăng. Máy này nên dùng 6 thread.

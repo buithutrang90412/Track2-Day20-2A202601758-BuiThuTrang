@@ -84,11 +84,10 @@ Server bão hòa khi tải lên 50 users. RPS chỉ tăng 1.06× trong khi P95 t
 
 | Day                   | Piece            | Real hay stub? |
 | --------------------- | ---------------- | -------------- |
-| N16 Cloud/IaC         |                  |                |
-| N17 Data pipeline     |                  |                |
-| N18 Lakehouse         |                  |                |
-| N19 Vector + features |                  |                |
-| N16-N19              | pipeline stubs / keyword fallback | stub |
+| N16 Cloud/IaC         | Cloud/IaC not implemented | stub |
+| N17 Data pipeline     | Data pipeline not implemented | stub |
+| N18 Lakehouse         | Lakehouse not implemented | stub |
+| N19 Vector + features | keyword overlap fallback | stub |
 | N20 Serving           | `llama-server` | real           |
 
 **Latency split** (mean của 3 query, từ output của `pipeline.py`):
