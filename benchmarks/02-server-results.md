@@ -29,6 +29,4 @@ Throughput moved 1.06x while P95 moved 3.23x. That gap is the goodput argument: 
 
 ## Your reading (required -- replace this line)
 
-_Where does your server saturate, and what is the evidence? Name the number that
-convinced you. Then say what you would change first to raise goodput at your SLO --
-and why that knob and not another._
+Server bão hòa ở 50 users. RPS chỉ tăng 1.06x khi tải tāng 5x, nhưng P95 tāng 3.23x từ 13 giây lên 42 giây. Effective concurrency 29.3 cao hơn 4 slots nên request phải chờ. Nên giảm prompt/output trước để tāng goodput mà không tốn thêm RAM.

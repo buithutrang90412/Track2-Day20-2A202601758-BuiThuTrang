@@ -40,6 +40,4 @@ The reasoning is as follows:
 
 ## Which N16-N19 pieces are real (required -- replace this line)
 
-_List each of N16, N17, N18, N19 as real or stubbed. Stubbing costs no points;
-misrepresenting it does. Then answer: is the dominant stage above what you expected?
-If you had to halve this pipeline's latency, which stage would you attack and why?_
+N16 Cloud/IaC: stub. N17 Data pipeline: stub. N18 Lakehouse: stub. N19 Vector + features: stub; pipeline dùng keyword overlap fallback vì không có embedding server. N20 Serving: real. LLM chiếm 100% latency, đúng với kỳ vọng. Muốn giảm 2x, tập trung vào decode LLM và output tokens.

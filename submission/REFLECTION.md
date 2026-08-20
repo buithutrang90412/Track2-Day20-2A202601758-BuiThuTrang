@@ -59,12 +59,12 @@ Q2 nhỏ hơn 0.11 GB nhưng chậm hơn. Decode giảm từ 53.3 xuống 50.9 t
 
 | Users | RPS | P50 (ms) | P95 (ms) | P99 (ms) | Eff. concurrency | Failures |
 | ----: | --: | -------: | -------: | -------: | ---------------: | -------: |
-|    10 |     |          |          |          |                  |          |
-|    50 |     |          |          |          |                  |          |
+|    10 | 1.10 | 8000 | 13000 | 14000 | 8.8 | 0.0% |
+|    50 | 1.16 | 27000 | 42000 | 46000 | 29.3 | 0.0% |
 
-- **Offered load tăng 5×, throughput thực tăng:** _<X.XX>×_
-- **P95 tăng:** _<X.XX>×_
-- **Effective concurrency ở 50 users:** _<số>_ so với `--parallel` = _<số>_ slots
+- **Offered load tăng 5×, throughput thực tăng:** **1.06×**
+- **P95 tăng:** **3.23×**
+- **Effective concurrency ở 50 users:** **29.3** so với `--parallel` = **4** slots
 
 **Peak `llamacpp:n_busy_slots_per_decode`** (từ `make metrics` khi `make load-50` đang
 chạy): **3.91 / 4 slots**
@@ -74,7 +74,7 @@ thuyết phục bạn? Nếu P95 tăng nhanh hơn RPS thì phần latency thêm 
 compute time — bạn biết bằng cách nào? Nếu bạn phải nâng goodput@SLO, bạn sẽ đổi knob
 nào **trước**, và vì sao knob đó?
 
-_Answer here._
+Server bão hòa khi tải lên 50 users. RPS chỉ tăng 1.06× trong khi P95 tăng 3.23×. Effective concurrency 29.3 cao hơn 4 slots và peak busy slots là 3.91/4. Request thêm chủ yếu nằm trong queue. Nên giảm prompt/output trước vì tāng slots sẽ tốn thêm RAM.
 
 ---
 
@@ -88,19 +88,20 @@ _Answer here._
 | N17 Data pipeline     |                  |                |
 | N18 Lakehouse         |                  |                |
 | N19 Vector + features |                  |                |
+| N16-N19              | pipeline stubs / keyword fallback | stub |
 | N20 Serving           | `llama-server` | real           |
 
 **Latency split** (mean của 3 query, từ output của `pipeline.py`):
 
-- embed: 
-- retrieve: 
-- llm: 
-- **stage chiếm nhiều nhất:**  (_<%>_ của total)
+- embed: **0.0 ms**
+- retrieve: **0.1 ms**
+- llm: **3464.8 ms**
+- **stage chiếm nhiều nhất:** **llm (100% của total)**
 
 **Reflection** (≤ 60 chữ): bottleneck ở đâu? Có khớp với kỳ vọng của bạn không? Nếu
 phải giảm latency của pipeline này 2×, bạn sẽ tấn công vào đâu?
 
-_Answer here._
+Embedding không chạy thật; pipeline dùng keyword overlap fallback. LLM là bottleneck vì chiếm 3464.8 ms trên tổng 3464.9 ms. Muốn giảm latency 2×, tập trung vào decode và giảm output tokens.
 
 ---
 
